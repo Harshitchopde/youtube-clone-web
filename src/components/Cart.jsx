@@ -79,6 +79,7 @@ function Cart({ type,video}) {
     }
     fetchChannel()
   },[video.userId])
+  console.log(video)
   return (
     <Link to={`/video/${video._id}`} style={{ textDecoration: "none", color: "inherit" }}>
       <Container type={type}>

@@ -37,7 +37,8 @@ color: ${({theme})=>theme.text};
     font-weight: 300;
     font-size: 16px;
 `;
-function Comment() {
+function Comment({comment}) {
+    
   return (
     <Container>
         <Avatar src='https://cdn.pixabay.com/photo/2023/08/24/02/25/lord-krishna-8209645_1280.png'/>
@@ -46,7 +47,7 @@ function Comment() {
                 <ChannelName>ChopdeHarshit</ChannelName>
                 <Time>12 day</Time>
             </SemiWrapper>
-            <SingleComt>how are you guys hop you are doing well please comment below</SingleComt>
+            <SingleComt>{comment.desc}</SingleComt>
 
         </Wrapper>
     </Container>

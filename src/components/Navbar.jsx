@@ -1,9 +1,10 @@
 import { AccountCircleOutlined, LogoutOutlined, SearchOutlined, VideoCallOutlined } from '@mui/icons-material';
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import { logout } from '../redux/userSlices';
+import Upload from './Upload';
 
 const Container = styled.div`
   position: sticky;
@@ -75,9 +76,11 @@ const Logout = styled.button`
 
 `
 function Navbar() {
+  const [open,setOpen]=useState(false);
   const { currentUser } = useSelector(state => state.user)
 
   return (
+    <>
     <Container>
       <Wrapper>
         <Search>
@@ -86,7 +89,7 @@ function Navbar() {
         </Search>
         {currentUser?(
         <User>
-          <VideoCallOutlined/>
+          <VideoCallOutlined onClick={()=>setOpen(true)}/>
           <Avatar/>
           {currentUser.name}
           
@@ -110,6 +113,9 @@ function Navbar() {
         </Link>
       </Wrapper>
     </Container>
+    {open && <Upload setOpen={setOpen}/>}
+    </>
+
   )
 }
 

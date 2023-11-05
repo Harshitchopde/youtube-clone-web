@@ -29,8 +29,8 @@ const Wrapper = styled.div`
 
 function App() {
   const [darkMode,setDarkMode] = useState(true);
-  
   return (
+    <>
     <ThemeProvider theme={darkMode ?darkTheme:lightTheme}>
 
       <Container>
@@ -58,7 +58,9 @@ function App() {
         </BrowserRouter>
 
       </Container>
+   
     </ThemeProvider>
+    </>
 
   );
 }
