@@ -154,7 +154,7 @@ const [channel,setChannel]= useState({})
     const handleDisLikes=async()=>{
       // error due to i use current use id instead of video 
       try {
-        console.log(currentUser)
+        // console.log(currentUser)
         await axios.put(`/user/dislike/${currentVideo._id}`)
         dispatch(dislikes(currentUser._id))
       } catch (error) {
@@ -174,12 +174,12 @@ const [channel,setChannel]= useState({})
     
     }
 
-
+// console.log(currentVideo.tag?.length)
   return (
     <Container>
       <Content>
         <VideoWrapper>
-          {/* <VideoFrame src="https://www.youtube.com/embed/CCF-xV3RSSs?si=YlZPn0k_sae6iMOK" cont/> */}
+      
           <VideoFrame  controls>
           <source src={currentVideo.videoUrl} type="video/mp4" />
           </VideoFrame>
@@ -196,7 +196,7 @@ const [channel,setChannel]= useState({})
             {currentVideo.likes?.includes(currentUser._id) ? (
            <ThumbUpIcon/>
              ): (<ThumbUpOutlined />)}
-            {currentVideo.likes?.lenght}</Button>
+           {currentVideo.likes?.length}</Button>
 
             <Button onClick={handleDisLikes}>
              {currentVideo.dislikes?.includes(currentUser._id) ? (

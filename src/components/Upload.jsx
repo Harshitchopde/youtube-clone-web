@@ -38,15 +38,22 @@ cursor: pointer;
 const Title = styled.h2`
  text-align: center;
 `;
+// const Input = styled.input`
+//     border: 1px solid  ${({ theme }) => theme.soft};
+//     border-radius: 3px;
+//     outline: none;
+//     padding: 10px;
+//     color:  ${({ theme }) => theme.text};
+//     background-color: transparent;
+//     width: 100%;
+//     font-size: 14px;
+// `;
 const Input = styled.input`
-    border: 1px solid  ${({ theme }) => theme.soft};
-    border-radius: 3px;
-    outline: none;
-    padding: 10px;
-    color:  ${({ theme }) => theme.text};
     background-color: transparent;
-    width: 100%;
-    font-size: 14px;
+    width: 90%;
+    color: ${({ theme }) => theme.text};
+    border: none;
+    outline: none;// it is for outline of input of search bar
 `;
 const Desc = styled.textarea`
     border: 1px solid  ${({ theme }) => theme.soft};
@@ -144,10 +151,11 @@ const Upload = ({ setOpen }) => {
         setOpen(false)
         res.status==200 && navigate(`/video/${res.data._id}`)
     }
+  
     return (
         <Container>
             <Wrapper>
-                <Close onClick={() => setOpen(false)}>X</Close>
+                <Close onClick={()=>setOpen(false)}>X</Close>
                 <Title >Upload new videos</Title>
                 <Label>Video:</Label>
                {videoPer>0?("Uploading "+videoPer+"%"):

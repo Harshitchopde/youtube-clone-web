@@ -1,9 +1,9 @@
-import { AccountCircleOutlined, LogoutOutlined, SearchOutlined, VideoCallOutlined } from '@mui/icons-material';
+import { AccountCircleOutlined, SearchOutlined, VideoCallOutlined } from '@mui/icons-material';
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
-import { logout } from '../redux/userSlices';
+// import { logout } from '../redux/userSlices';
 import Upload from './Upload';
 
 const Container = styled.div`
@@ -89,7 +89,9 @@ function Navbar() {
         </Search>
         {currentUser?(
         <User>
-          <VideoCallOutlined onClick={()=>setOpen(true)}/>
+          <VideoCallOutlined 
+          style={{cursor:'pointer'}}
+          onClick={()=>setOpen(true)}/>
           <Avatar/>
           {currentUser.name}
           
@@ -113,7 +115,7 @@ function Navbar() {
         </Link>
       </Wrapper>
     </Container>
-    {open && <Upload setOpen={setOpen}/>}
+  {open && <Upload setOpen={setOpen}/>}
     </>
 
   )

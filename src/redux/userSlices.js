@@ -34,7 +34,7 @@ export const userSlices = createSlice({
                 )
             }
             else {
-                // not liked
+                // subscribe to the channel
                 state.currentUser.subscribersUser.push(action.payload);
                
             }

@@ -20,6 +20,7 @@
     "react-scripts": "^5.0.1",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.0.8",
+    "timeago": "^1.6.7",
     "timeago.js": "^4.0.2",
     "web-vitals": "^2.1.4"
   },

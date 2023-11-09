@@ -20,12 +20,12 @@ border-radius: 50%;
 const Input = styled.input`
 margin-left: 15px;
 width: 100%;
-font-size: 18px;
-font-weight: 500;
+font-size: 18px;                             
+font-weight: 500; 
 border: none;
 outline: none;
 /* color: red; */
-color: ${({theme})=>theme.text};
+color: ${({theme})=>theme.text};  
 background: transparent;
   
 `;

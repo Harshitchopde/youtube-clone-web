@@ -15,16 +15,16 @@ import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+// import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import NightlightRoundOutlinedIcon from '@mui/icons-material/NightlightRoundOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import { dark } from '@mui/material/styles/createPalette';
+// import { dark } from '@mui/material/styles/createPalette';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 const Container = styled.div`
   flex: 1;
-  background-color: ${({theme}) =>theme.bg};
-  color: ${({theme})=>theme.text};
+  background-color: ${({ theme }) => theme.bg};
+  color: ${({ theme }) => theme.text};
   height: 100vh;
   font-size: 17px;
   
@@ -72,13 +72,13 @@ const Item = styled.div`
   cursor: pointer;
   padding: 7.5px 0px;
   &:hover{
-    background-color:${({theme})=>theme.hover};
+    background-color:${({ theme }) => theme.hover};
   }
 
 `;
 const Hr = styled.hr`
 margin: 15px 0px;
-border: 0.5px solid ${({theme})=>theme.soft};
+border: 0.5px solid ${({ theme }) => theme.soft};
 
 `
 const Title = styled.h2`
@@ -87,43 +87,37 @@ const Title = styled.h2`
   color: #aaaaaa;
   margin-bottom: 20px;
 `
-function Menu({darkMode,setDarkMode}) {
-  const {currentUser} = useSelector(state=>state.user)
+function Menu({ darkMode, setDarkMode }) {
+  const { currentUser } = useSelector(state => state.user)
   return (
     <Container>
       <Wrapper>
-       
         <Logo>
           <Img src={tubelog} />
-
-
           OnlinePlayer
         </Logo>
-
-      
-        <Link to="/" style={{textDecoration:"none",color:"inherit"}}>
-
-        <Item>
-          <HomeIcon />
-          Home
-        </Item>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <HomeIcon />
+            Home
+          </Item>
         </Link>
-        
-        <Link to="trends" style={{textDecoration:"none",color:"inherit"}}>
 
-        <Item>
-          <ExploreOutlinedIcon />
-          Explore
-        </Item>
+        <Link to="trends" style={{ textDecoration: "none", color: "inherit" }}>
+
+          <Item>
+            <ExploreOutlinedIcon />
+            Explore
+          </Item>
         </Link>
-        <Link to="subscriptions" style={{textDecoration:"none",color:"inherit"}} >
-          
-        <Item>
-          <SubscriptionsOutlinedIcon />
-          Subscription
-        </Item>
+        <Link to="subscriptions" style={{ textDecoration: "none", color: "inherit" }} >
+
+          <Item>
+            <SubscriptionsOutlinedIcon />
+            Subscription
+          </Item>
         </Link>
-        <Hr/>
+        <Hr />
         <Item>
           <VideoLibraryOutlinedIcon />
           Library
@@ -132,16 +126,16 @@ function Menu({darkMode,setDarkMode}) {
           <HistoryOutlinedIcon />
           History
         </Item>
-        <Hr/>
+        <Hr />
         {!currentUser && <><Login>
           Sign in to like Vides , suscribe and many more
-          <Link to="signIn" style={{textDecoration:"none"}}>
+          <Link to="signIn" style={{ textDecoration: "none" }}>
 
-          <Button><PersonOutlineOutlinedIcon/>Sign in</Button>
+            <Button><PersonOutlineOutlinedIcon />Sign in</Button>
           </Link>
 
         </Login>
-        <Hr/>
+          <Hr />
         </>
         }
         <Title>
@@ -171,9 +165,9 @@ function Menu({darkMode,setDarkMode}) {
           <LiveTvOutlinedIcon />
           Live
         </Item>
-       <Hr/>
+        <Hr />
         <Item>
-          <SettingsOutlinedIcon/>
+          <SettingsOutlinedIcon />
           Setting
         </Item>
         <Item>
@@ -181,14 +175,14 @@ function Menu({darkMode,setDarkMode}) {
           Report
         </Item>
         <Item>
-          <HelpOutlineOutlinedIcon/>
+          <HelpOutlineOutlinedIcon />
           Help
         </Item>
-        <Item onClick={()=>{setDarkMode(!darkMode)}}>
+        <Item onClick={() => { setDarkMode(!darkMode) }}>
           <NightlightRoundOutlinedIcon />
-          {darkMode?"Light Mode":"Dark Mode"}
+          {darkMode ? "Light Mode" : "Dark Mode"}
         </Item>
-       
+
       </Wrapper>
     </Container>
   )

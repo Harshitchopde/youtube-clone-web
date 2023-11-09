@@ -9,41 +9,41 @@ justify-content: space-between;
 flex-wrap: wrap;
 
 `
-function Home({type}) {
-   
-     const [videos,setVideos] = useState([])// insilise with empty array
-     useEffect(()=>{
-        const fetchVideos = async()=>{
+function Home({ type }) {
+
+    const [videos, setVideos] = useState([])// insilise with empty array
+    useEffect(() => {
+        const fetchVideos = async () => {
             try {
-                console.log(type);
-                
+                // console.log(type);
+
                 const res = await axios.get(`/video/${type}`);
-            setVideos(res.data);
+                setVideos(res.data);
             } catch (error) {
                 console.log(error);
-                
+
             }
-            
+
         }
         fetchVideos()
-     },[type])
+    }, [type])
     return (
         <Container>
 
-            {videos.map((video)=>(
-               <Cart key={video._id} video={video}/>
-               
+            {videos.map((video) => (
+                <Cart key={video._id} video={video} />
+
             )
-            
-                
-                
+
+
+
             )}
 
-         
+
         </Container>
     )
 }
 Home.defaultProps = {
     type: 'random'
-  };
+};
 export default Home
