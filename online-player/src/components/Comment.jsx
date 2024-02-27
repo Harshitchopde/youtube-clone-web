@@ -7,7 +7,7 @@ const Container = styled.div`
 `;
 const Wrapper = styled.div`
 margin-left: 15px;
-    
+
 `;
 const Avatar = styled.img`
 width: 36px;
