@@ -129,6 +129,7 @@ function Video() {
   const {currentVideo}= useSelector((state)=>state.video);
   const dispatch = useDispatch();
   const path = useLocation().pathname.split('/')[2];
+  console.log(path,currentUser,currentVideo)
     // console.log(path)
 const [channel,setChannel]= useState({})
 // const [video,setVideo]= useState({})
@@ -136,7 +137,7 @@ const [channel,setChannel]= useState({})
       const fetchData = async ()=>{
         try {
           dispatch(fetchStart())
-         
+          console.log("Video fetch")
           const videoRes = await axios.get(`/video/find/${path}`);
           const channelRes = await axios.get(`/user/find/${videoRes.data.userId}`);
           // setVideo(videoRes.data)
@@ -178,28 +179,30 @@ const [channel,setChannel]= useState({})
   return (
     <Container>
       <Content>
-        <VideoWrapper>
+      {
+        currentVideo &&   <VideoWrapper>
       
-          <VideoFrame  controls>
-          <source src={currentVideo.videoUrl} type="video/mp4" />
-          </VideoFrame>
+        <VideoFrame  controls>
+        <source src={currentVideo?.videoUrl} type="video/mp4" />
+        </VideoFrame>
 
-          
         
-        </VideoWrapper>
-        <Title>{currentVideo.title}</Title>
+      
+      </VideoWrapper>
+      }
+        <Title>{currentVideo?.title}</Title>
         <Details>
-          <Info>{currentVideo.views} view  {format(currentVideo.createdAt)}</Info>
+          <Info>{currentVideo?.views} view  {format(currentVideo?.createdAt)}</Info>
           <Buttons>
             
             <Button onClick={handleLikes}>
-            {currentVideo.likes?.includes(currentUser._id) ? (
+            {currentVideo?.likes?.includes(currentUser?._id) ? (
            <ThumbUpIcon/>
              ): (<ThumbUpOutlined />)}
-           {currentVideo.likes?.length}</Button>
+           {currentVideo?.likes?.length}</Button>
 
             <Button onClick={handleDisLikes}>
-             {currentVideo.dislikes?.includes(currentUser._id) ? (
+             {currentVideo?.dislikes?.includes(currentUser?._id) ? (
              <ThumbDown />): (<ThumbDownOutlined/>)}
              Dislike</Button>
             <Button><ReplyOutlined />Share</Button>
@@ -209,23 +212,23 @@ const [channel,setChannel]= useState({})
         <ChannelInfo>
           <ChannelDetailWithLogo>
 
-        <Image src={channel.img}/>
+       {channel && <Image src={channel?.img}/>}
 
          <ChannelDetail>
-          <ChannelName>{channel.name}</ChannelName>
-          <ChannelSubscriber>{channel.subscribers} Subscriber</ChannelSubscriber>
-          <ChannelDesc>{currentVideo.desc}</ChannelDesc>
+          <ChannelName>{channel?.name}</ChannelName>
+          <ChannelSubscriber>{channel?.subscribers} Subscriber</ChannelSubscriber>
+          <ChannelDesc>{currentVideo?.desc}</ChannelDesc>
          </ChannelDetail>
          </ChannelDetailWithLogo>
 
           <Subscriber onClick={handleSubscribe}>
-            {currentUser.subscribersUser?.includes(channel._id)?
+            {currentUser?.subscribersUser?.includes(channel._id)?
           "SUBSCRIBED":"SUBSCRIBE"}
        
           </Subscriber>
         </ChannelInfo>
         <Hr/>
-        <Comments videoId={currentVideo._id}/>
+        <Comments videoId={currentVideo?._id}/>
         
       </Content>
       {/* <Recommendation>

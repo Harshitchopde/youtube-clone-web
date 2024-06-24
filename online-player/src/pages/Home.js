@@ -19,6 +19,8 @@ function Home({ type }) {
 
                 const res = await axios.get(`/video/${type}`);
                 setVideos(res.data);
+                console.log("Video : ",res.data);
+                
             } catch (error) {
                 console.log(error);
 

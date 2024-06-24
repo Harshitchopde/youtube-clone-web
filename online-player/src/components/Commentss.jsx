@@ -53,7 +53,7 @@ function Commentss({ videoId }) {
     return (
         <>
             <NewComments>
-                <Avatar src={currentUser.img}/>
+                <Avatar src={currentUser?.img}/>
                 <Input placeholder='Add a Comments' />
             </NewComments>
             {comments.map(comment =>

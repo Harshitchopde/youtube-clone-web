@@ -51,9 +51,10 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8800/api",
+  "proxy": "https://youtube-clone-backend-853d.onrender.com/api/",
   "devDependencies": {
-    "eslint": "^8.57.0",
+  
     "eslint-plugin-jsx-a11y": "^6.8.0"
   }
 }
+
