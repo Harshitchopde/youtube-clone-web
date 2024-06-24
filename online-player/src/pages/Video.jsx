@@ -10,7 +10,9 @@ import axios from 'axios';
 import { dislikes, fetchStart, fetchSuccess, likes } from '../redux/videoSlices';
 import { subscription} from '../redux/userSlices';
 import { format } from 'timeago.js';
+// import {toast} from "react-toastify"
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import toast from 'react-hot-toast';
 const Container = styled.div`
  display: flex;
   
@@ -153,6 +155,11 @@ const [channel,setChannel]= useState({})
     },[path,dispatch])
     // console.log(currentVideo.likes.lenght)
     const handleDisLikes=async()=>{
+      if(!currentUser){
+        console.log("You are Not login")
+        toast.error("You are not login")
+        return;
+      }
       // error due to i use current use id instead of video 
       try {
         // console.log(currentUser)
@@ -163,10 +170,20 @@ const [channel,setChannel]= useState({})
       }
     }
     const handleLikes= async()=>{
+      if(!currentUser){
+        console.log("You are Not login")
+        toast.error("You are not login")
+        return;
+      }
       await axios.put(`/user/like/${currentVideo._id}`)
       dispatch(likes(currentUser._id))
     }
     const handleSubscribe =async()=>{
+      if(!currentUser){
+        console.log("You are Not login")
+        toast.error("You are not login")
+        return;
+      }
       // console.log("run the sub"+currentVideo.userId)
       currentUser.subscribersUser.includes(channel._id)?
       await axios.put(`/user/unsub/${channel._id}`):
