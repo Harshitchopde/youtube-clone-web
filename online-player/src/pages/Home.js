@@ -32,14 +32,14 @@ function Home({ type }) {
     return (
         <Container>
 
-            { videos && videos?.map((video) => (
+            {/* { videos && videos?.map((video) => (
                 <Cart key={video._id} video={video} />
 
             )
 
 
 
-            )}
+            )} */}
 
 
         </Container>
