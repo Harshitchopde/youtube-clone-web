@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { loginStart, loginSuccess, loginfailure } from '../redux/userSlices'
 import { auth,provider } from '../firebase'
 import { signInWithPopup } from 'firebase/auth'
+import { BASE_URL } from '../constants/constant'
 const Constainer = styled.div`
 display: flex;
 align-items: center;
@@ -75,7 +76,7 @@ function SignIn() {
         e.preventDefault();
         dispatch(loginStart())
         try {
-            const res = await axios.post("/auth/signin",{name,password})
+            const res = await axios.post(BASE_URL+"/auth/signin",{name,password})
             console.log(res.data);
             dispatch(loginSuccess(res.data))
             
@@ -87,7 +88,7 @@ function SignIn() {
         try {
             dispatch(loginStart())
             signInWithPopup(auth,provider).then((result)=>{
-             axios.post('/auth/google',{
+             axios.post(BASE_URL+'/auth/google',{
                 name:result.user.displayName,
                 email:result.user.email,
                 img:result.user.photoURL,

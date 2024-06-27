@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import { format } from 'timeago.js';
+import { BASE_URL } from '../constants/constant';
 const Container = styled.div`
 /* width: 360px; */
 width:${(props) => props.type !== "sm" && "360px"};
@@ -70,7 +71,7 @@ function Cart({ type,video}) {
   useEffect(()=>{
     const fetchChannel = async()=>{
       try{
-        const res = await axios.get(`/user/find/${video.userId}`)
+        const res = await axios.get(BASE_URL+`/user/find/${video.userId}`)
         setChannel(res.data)
       }catch(error){
         console.log(error);

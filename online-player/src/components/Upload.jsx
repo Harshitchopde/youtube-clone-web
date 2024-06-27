@@ -4,6 +4,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import app from '../firebase';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../constants/constant';
 const Container = styled.div`
     width: 100%;
     height: 100%;
@@ -134,10 +135,10 @@ const Upload = ({ setOpen }) => {
                 })
             });
     }
-     useEffect(() => { 
-       video && uploadFile(video,"videoUrl") }, [video])
-     useEffect(() => { 
-        image && uploadFile(image,"imgUrl") }, [image])
+    //  useEffect(() => { 
+    //    video && uploadFile(video,"videoUrl") }, [video])
+    //  useEffect(() => { 
+    //     image && uploadFile(image,"imgUrl") }, [image])
     const handleTags = (e) => {
         setTags(e.target.value.split(","));
     }
@@ -149,13 +150,14 @@ const Upload = ({ setOpen }) => {
     }
     const handleUpload = async(e)=>{
         e.preventDefault()
+        console.log("Handle upload")
         
      try {
-           // console.log(input)
-           const res = await axios.post("/video",{...input,tag})
+           console.log( "Input : ",input)
+        //    const res = await axios.post(BASE_URL+"/video",{...input,tag})
            setOpen(false)
-           console.log(res)
-           res.status==200 && navigate(`/video/${res.data._id}`)
+        //    console.log(res)
+        //    res.status==200 && navigate(BASE_URL+`/video/${res.data._id}`)
         
      } catch (error) {
         console.log(error)

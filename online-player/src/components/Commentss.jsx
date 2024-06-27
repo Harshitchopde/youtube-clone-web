@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Comment from './Comment'
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { BASE_URL } from '../constants/constant';
 const NewComments = styled.div`
 display: flex;
 padding: 5px;
@@ -37,7 +38,7 @@ function Commentss({ videoId }) {
             try {
 
 
-                const commentRes = await axios.get(`/comment/${videoId}`);
+                const commentRes = await axios.get(BASE_URL+`/comment/${videoId}`);
 
 
                 setComments(commentRes.data)
