@@ -13,6 +13,7 @@ import { format } from 'timeago.js';
 // import {toast} from "react-toastify"
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import toast from 'react-hot-toast';
+import { BASE_URL } from '../constants/constant';
 const Container = styled.div`
  display: flex;
   
@@ -140,8 +141,8 @@ const [channel,setChannel]= useState({})
         try {
           dispatch(fetchStart())
           console.log("Video fetch")
-          const videoRes = await axios.get(`/video/find/${path}`);
-          const channelRes = await axios.get(`/user/find/${videoRes.data.userId}`);
+          const videoRes = await axios.get(BASE_URL+`/video/find/${path}`);
+          const channelRes = await axios.get(BASE_URL+`/user/find/${videoRes.data.userId}`);
           // setVideo(videoRes.data)
           dispatch(fetchSuccess(videoRes.data))
           setChannel(channelRes.data)
@@ -163,7 +164,7 @@ const [channel,setChannel]= useState({})
       // error due to i use current use id instead of video 
       try {
         // console.log(currentUser)
-        await axios.put(`/user/dislike/${currentVideo._id}`)
+        await axios.put(BASE_URL+`/user/dislike/${currentVideo._id}`)
         dispatch(dislikes(currentUser._id))
       } catch (error) {
         console.log(error+" "+currentVideo._id)
@@ -175,7 +176,7 @@ const [channel,setChannel]= useState({})
         toast.error("You are not login")
         return;
       }
-      await axios.put(`/user/like/${currentVideo._id}`)
+      await axios.put(BASE_URL+`/user/like/${currentVideo._id}`)
       dispatch(likes(currentUser._id))
     }
     const handleSubscribe =async()=>{
@@ -186,8 +187,8 @@ const [channel,setChannel]= useState({})
       }
       // console.log("run the sub"+currentVideo.userId)
       currentUser.subscribersUser.includes(channel._id)?
-      await axios.put(`/user/unsub/${channel._id}`):
-      await axios.put(`/user/sub/${channel._id}`)
+      await axios.put(BASE_URL+`/user/unsub/${channel._id}`):
+      await axios.put(BASE_URL+`/user/sub/${channel._id}`)
         dispatch(subscription(channel._id))   
     
     }
